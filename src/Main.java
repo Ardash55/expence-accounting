@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Main {
     static ArrayList<Account> accounts = new ArrayList<>();
-   static ArrayList<Category> categories = new ArrayList<>();
+    static ArrayList<Category> categories = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
@@ -11,6 +11,10 @@ public class Main {
         categories.add(food);
         Category food2 = new Category("Еда2", 200);
         categories.add(food2);
+        Account cash = new Account("Наличные", 1000);
+        accounts.add(cash);
+        Account cash2 = new Account("Карта", 10000);
+        accounts.add(cash2);
 
         while (true) {
             System.out.println("1. Добавить  категорию трат");
@@ -68,7 +72,17 @@ public class Main {
         System.out.println("Выберите категорию трат:");
         showCategories();
         int categoryNumber = sc.nextInt();
-
+        Category category = categories.get(categoryNumber - 1);
+        System.out.println("Выберите счет для трат");
+        showAccounts();
+        int accountNumber = sc.nextInt();
+        Account account = accounts.get(accountNumber - 1);
+        System. out.println("Введите сумму трат");
+        int sum = sc.nextInt();
+        account.minusSum(sum);
+        category.plusSpending(sum);
+        System.out.println(account.getName() + ": " + account.getAmount());
+        System.out.println(category.getName() + ": " + category.getSpending());
     }
 
     public static void showCategories() {
