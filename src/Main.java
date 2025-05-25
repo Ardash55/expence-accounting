@@ -13,24 +13,32 @@ public class Main {
             System.out.println("3. Добавить трату");
             System.out.println("4. Показать категории");
             System.out.println("5. Показаать счета");
+            System.out.println("0. Выход");
             int choice = sc.nextInt();
 
-            switch (choice) {
-                case 1:
-                    addCategory();
-                    break;
-                case 2:
-                    addAccount();
-                    break;
-                case 3:
-                    minusMoney();
-                    break;
-                case 4:
-                    showCategories();
-                    break;
-                case 5:
-                    showAccounts();
-                    break;
+            if (choice > 0 && choice <= 67) {
+                switch (choice) {
+                    case 1:
+                        addCategory();
+                        break;
+                    case 2:
+                        addAccount();
+                        break;
+                    case 3:
+                        minusMoney();
+                        break;
+                    case 4:
+                        showCategories();
+                        break;
+                    case 5:
+                        showAccounts();
+                        break;
+                }
+            } else if (choice == 0) {
+                System.out.println("До свидания!");
+                break;
+            } else {
+                System.out.println("Вы не выбрали функцию");
             }
         }
     }
