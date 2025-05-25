@@ -7,15 +7,6 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        Category food = new Category("Еда", 200);
-        categories.add(food);
-        Category food2 = new Category("Еда2", 200);
-        categories.add(food2);
-        Account cash = new Account("Наличные", 1000);
-        accounts.add(cash);
-        Account cash2 = new Account("Карта", 10000);
-        accounts.add(cash2);
-
         while (true) {
             System.out.println("1. Добавить  категорию трат");
             System.out.println("2. Добавить счет");
@@ -41,7 +32,6 @@ public class Main {
                     showAccounts();
                     break;
             }
-            break;
         }
     }
 
@@ -87,17 +77,21 @@ public class Main {
 
     public static void showCategories() {
         int id = 1;
+        System.out.println("Ваши категории трат:");
         for (Category category : categories) {
             System.out.println(id + ". " + category.getName() + ": " + category.getSpending());
             id++;
         }
+        System.out.println("");
     }
 
     public static void showAccounts() {
         int id = 1;
+        System.out.println("Ваши счета:");
         for (Account account : accounts) {
             System.out.println(id + ". " + account.getName() + ": " + account.getAmount());
             id++;
         }
+        System.out.println("");
     }
 }
