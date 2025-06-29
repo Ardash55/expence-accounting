@@ -6,6 +6,10 @@ public class Main {
     static ArrayList<Category> categories = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
+        Category food = new Category("Еда", 200);
+        categories.add(food);
+        Account cash = new Account("Наличные", 500);
+        accounts.add(cash);
 
         while (true) {
             System.out.println("1. Добавить  категорию трат");
@@ -69,18 +73,24 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Выберите категорию трат:");
         showCategories();
+        System.out.println("0. Назад");
         int categoryNumber = sc.nextInt();
-        Category category = categories.get(categoryNumber - 1);
-        System.out.println("Выберите счет для трат");
-        showAccounts();
-        int accountNumber = sc.nextInt();
-        Account account = accounts.get(accountNumber - 1);
-        System. out.println("Введите сумму трат");
-        int sum = sc.nextInt();
-        account.minusSum(sum);
-        category.plusSpending(sum);
-        System.out.println(account.getName() + ": " + account.getAmount());
-        System.out.println(category.getName() + ": " + category.getSpending());
+        if (categoryNumber > 0) {
+            Category category = categories.get(categoryNumber - 1);
+            System.out.println("Выберите счет для трат");
+            showAccounts();
+            System.out.println("0. Назад");
+            int accountNumber = sc.nextInt();
+            if (accountNumber > 0) {
+                Account account = accounts.get(accountNumber - 1);
+                System. out.println("Введите сумму трат");
+                int sum = sc.nextInt();
+                account.minusSum(sum);
+                category.plusSpending(sum);
+                System.out.println(account.getName() + ": " + account.getAmount());
+                System.out.println(category.getName() + ": " + category.getSpending());
+            } else {}
+        } else {}
     }
 
     public static void showCategories() {
@@ -90,7 +100,6 @@ public class Main {
             System.out.println(id + ". " + category.getName() + ": " + category.getSpending());
             id++;
         }
-        System.out.println("");
     }
 
     public static void showAccounts() {
@@ -100,6 +109,5 @@ public class Main {
             System.out.println(id + ". " + account.getName() + ": " + account.getAmount());
             id++;
         }
-        System.out.println("");
     }
 }
