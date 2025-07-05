@@ -19,6 +19,10 @@ public class Account {
         name = newName;
     }
 
+    public void setAmount(int newAmount) {
+        amount = newAmount;
+    }
+
     public void plusSum(int plus) {
         amount += plus;
     }

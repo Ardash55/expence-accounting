@@ -20,10 +20,11 @@ public class Main {
             System.out.println("4. Показать категории");
             System.out.println("5. Показаать счета");
             System.out.println("6. Изменить категории трат");
+            System.out.println("7. Изменить счета");
             System.out.println("0. Выход");
             int choice = sc.nextInt();
 
-            if (choice > 0 && choice <= 6) {
+            if (choice > 0 && choice <= 7) {
                 switch (choice) {
                     case 1:
                         addCategory();
@@ -42,6 +43,9 @@ public class Main {
                         break;
                     case 6:
                         changeCategory();
+                        break;
+                    case 7:
+                        changeAccount();
                         break;
                 }
             } else if (choice == 0) {
@@ -119,7 +123,7 @@ public class Main {
     }
 
     public static void changeCategory() {
-        System.out.println("Выберите кааатегорию для трат");
+        System.out.println("Выберите кааатегорию для изменения");
         showCategories();
         int categoryNumber = sc.nextInt();
         sc.nextLine();
@@ -127,10 +131,26 @@ public class Main {
         System.out.println("Введите новое название");
         String newName = sc.nextLine();
         category.setName(newName);
-        System.out.println("Введите сумму на счету");
+        System.out.println("Введите общую сумму трат");
         int spending = sc.nextInt();
         sc.nextLine();
         category.setSpending(spending);
         System.out.println(category.getName() + ": " + category.getSpending());
+    }
+
+    public static void changeAccount() {
+        System.out.println("Выберите счет для изменения");
+        showAccounts();
+        int accountNumber = sc.nextInt();
+        sc.nextLine();
+        Account account = accounts.get(accountNumber - 1);
+        System.out.println("Введите новое название");
+        String newName = sc.nextLine();
+        account.setName(newName);
+        System.out.println("Введите сумму на счету");
+        int spending = sc.nextInt();
+        sc.nextLine();
+        account.setAmount(spending);
+        System.out.println(account.getName() + ": " + account.getAmount());
     }
 }
