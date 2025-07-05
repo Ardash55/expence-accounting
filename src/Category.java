@@ -22,4 +22,8 @@ public class Category {
     public void setName (String newName) {
         this.name = newName;
     }
+
+    public void setSpending(int newSpending) {
+        Spending = newSpending;
+    }
 }
