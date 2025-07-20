@@ -14,17 +14,18 @@ public class Main {
         accounts.add(cash);
 
         while (true) {
-            System.out.println("1. Добавить  категорию трат");
+            System.out.println("1. Добавить категорию трат");
             System.out.println("2. Добавить счет");
             System.out.println("3. Добавить трату");
-            System.out.println("4. Показать категории");
-            System.out.println("5. Показаать счета");
-            System.out.println("6. Изменить категории трат");
-            System.out.println("7. Изменить счета");
+            System.out.println("4. Пополнить счет");
+            System.out.println("5. Показать категории");
+            System.out.println("6. Показаать счета");
+            System.out.println("7. Изменить категории трат");
+            System.out.println("8. Изменить счета");
             System.out.println("0. Выход");
             int choice = sc.nextInt();
 
-            if (choice > 0 && choice <= 7) {
+            if (choice > 0 && choice <= 8) {
                 switch (choice) {
                     case 1:
                         addCategory();
@@ -36,15 +37,18 @@ public class Main {
                         minusMoney();
                         break;
                     case 4:
-                        showCategories();
+                        plusMoney();
                         break;
                     case 5:
-                        showAccounts();
+                        showCategories();
                         break;
                     case 6:
-                        changeCategory();
+                        showAccounts();
                         break;
                     case 7:
+                        changeCategory();
+                        break;
+                    case 8:
                         changeAccount();
                         break;
                 }
@@ -103,6 +107,23 @@ public class Main {
         } else {}
     }
 
+    public static void plusMoney() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Выберите счет: ");
+        showAccounts();
+        System.out.println("0. Назад");
+        System.out.println("");
+        int accountNumber = sc.nextInt();
+        if (accountNumber > 0) {
+            Account account = accounts.get(accountNumber - 1);
+            System.out.println("Введите сумму пополнения");
+            int sum = sc.nextInt();
+            account.plusSum(sum);
+            System.out.println(account.getName() + ": " + account.getAmount());
+        } else if (accountNumber == 0) {
+        }
+    }
+
     public static void showCategories() {
         int id = 1;
         System.out.println("Ваши категории трат:");
@@ -110,7 +131,7 @@ public class Main {
             System.out.println(id + ". " + category.getName() + ": " + category.getSpending());
             id++;
         }
-//        changeCategory();
+        System.out.println("");
     }
 
     public static void showAccounts() {
@@ -120,6 +141,7 @@ public class Main {
             System.out.println(id + ". " + account.getName() + ": " + account.getAmount());
             id++;
         }
+        System.out.println("");
     }
 
     public static void changeCategory() {
